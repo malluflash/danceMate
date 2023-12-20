@@ -13,9 +13,10 @@ const Hero = () => {
             
           <h1 className='p-5 text-center mb-3 mt-5 text-dark'>Welcome to Dance Mate !</h1>
           <h4 className='text-center mb-3 mt-5 text-dark'>
-          The Dance Mate App is a groundbreaking online platform dedicated to enhancing the dance education experience.
-          With a focus on accessibility, interactivity, and community building. this web application
-          revolutionizes the world of dance instruction, catering to both dance enthusiasts and <b>professionals alike!</b>
+          The Dance Mate App stands out as an innovative online platform committed to elevating the dance education journey.
+          Prioritizing accessibility, interactivity, and community development,
+          this web application transforms the landscape of dance instruction,
+          serving the needs of both dance enthusiasts and professionals!
           
           </h4>
          
