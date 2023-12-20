@@ -1,0 +1,20 @@
+Hero {
+  background-image: url('./img/dramatic-dance-photo.jpg');
+
+}
+  
+.roomfac {
+  background-color: rgba(255, 145, 0, 0.5);
+}
+
+
+.custom-toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler.collapsed .custom-toggler-icon {
+  background-color: #000; 
+}

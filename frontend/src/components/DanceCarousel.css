@@ -1,0 +1,23 @@
+
+.custom-carousel {
+  opacity: 0.8;
+}
+
+
+.custom-carousel .carousel-inner {
+   
+  margin: auto;
+}
+
+
+.custom-carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.custom-carousel h1,
+.custom-carousel h2,
+.custom-carousel p {
+  color: #fff; 
+}

@@ -1,0 +1,11 @@
+[
+    {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "mobile": "123-456-7890",
+      "role": "student",
+      "status": true
+    }
+    
+  ]
+  

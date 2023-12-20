@@ -1,0 +1,12 @@
+body {
+  background: #f2f2f2;  
+  
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+
+
+  /* background-image: url('./img/bg.jpg'); */
