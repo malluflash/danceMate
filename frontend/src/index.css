@@ -1,12 +1,138 @@
-body {
-  background: #f2f2f2;  
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light-bg text-light-text transition-colors duration-200;
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   
-  background-attachment: fixed;
-  background-size: cover;
-  margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  .dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
 }
 
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-button hover:shadow-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary-light focus:ring-secondary;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent-dark focus:ring-accent;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus:ring-primary;
+  }
 
+  .btn-outline-accent {
+    @apply border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-white focus:ring-accent;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-sm rounded-lg;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-lg rounded-xl;
+  }
+  
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-light-border bg-light-card text-light-text 
+    focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200;
+  }
+  
+  .dark .input {
+    @apply border-dark-border bg-dark-card text-dark-text focus:ring-accent;
+  }
+  
+  .card {
+    @apply bg-light-card rounded-2xl shadow-card p-6 border border-light-border transition-all duration-200 hover:shadow-card-hover;
+  }
+  
+  .dark .card {
+    @apply bg-dark-card border-dark-border;
+  }
+  
+  .nav-link {
+    @apply text-light-text hover:text-primary transition-colors duration-200;
+  }
+  
+  .dark .nav-link {
+    @apply text-dark-text hover:text-accent;
+  }
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium mb-2 text-light-text dark:text-dark-text;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-success/10 text-success;
+  }
+
+  .badge-warning {
+    @apply bg-warning/10 text-warning;
+  }
+
+  .badge-error {
+    @apply bg-error/10 text-error;
+  }
+
+  .badge-info {
+    @apply bg-info/10 text-info;
+  }
+}
 
   /* background-image: url('./img/bg.jpg'); */

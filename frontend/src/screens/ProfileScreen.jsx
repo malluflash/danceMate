@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import { toast } from "react-toastify";
@@ -53,63 +52,80 @@ const ProfileScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-dark">Update Profile</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Update Profile</h1>
 
-      <Form onSubmit={submitHandler} className="text-dark">
-        <Form.Group className="my-2" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="name"
+      <form onSubmit={submitHandler} className="text-gray-800 dark:text-gray-200 space-y-4">
+        <div className="mb-4">
+          <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+          <input
+            type="text"
+            id="name"
             placeholder="Enter name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group className="my-2" controlId="email">
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+          />
+        </div>
+        
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
+          <input
             type="email"
+            id="email"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group className="my-2" controlId="mobile">
-          <Form.Label>Mobile</Form.Label>
-          <Form.Control
-            type="phone"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+          />
+        </div>
+        
+        <div className="mb-4">
+          <label htmlFor="mobile" className="block text-sm font-medium mb-1">Mobile</label>
+          <input
+            type="tel"
+            id="mobile"
             placeholder="Enter your mobile number with country code"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+          />
+        </div>
 
-        <Form.Group className="my-2" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
+          <input
             type="password"
+            id="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+          />
+        </div>
 
-        <Form.Group className="my-2" controlId="confirmPassword">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
+        <div className="mb-4">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1">Confirm Password</label>
+          <input
             type="password"
+            id="confirmPassword"
             placeholder="Confirm password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        {isLoading && <Loader />}
-        <div className="text-center">
-          <Button type="submit" variant="primary" className="mt-3">
-            Update
-          </Button>
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+          />
         </div>
-      </Form>
+        
+        {isLoading && <Loader />}
+        
+        <div className="text-center">
+          <button 
+            type="submit" 
+            className="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition-colors duration-200 mt-4"
+          >
+            Update
+          </button>
+        </div>
+      </form>
     </FormContainer>
   );
 };

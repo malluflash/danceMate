@@ -1,13 +1,12 @@
-import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const SlotsContainer = ({ children }) => {
   return (
-    <Container>
-      <Row className='mt-5 mb-5 d-flex flex-wrap justify-content-center p-3' style={{ background: 'transparent', borderRadius: '10px' }}>
+    <div className="container-custom">
+      <div className="flex flex-wrap justify-center gap-6 my-12 p-6 rounded-lg">
         {children}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 

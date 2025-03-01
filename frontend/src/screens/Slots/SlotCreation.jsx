@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../../components/FormContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useCreateSlotsMutation } from "../../Slices/slotsApiSlice";
@@ -78,86 +77,99 @@ const SlotCreation = () => {
   return (
     <FormContainer>
       <div>
-        <h1 className="text-dark mb-5">Create a new Slot</h1>
-        <Form onSubmit={submitHandler} className="text-dark">
-          <Form.Group className="my-2" controlId="capacity">
-            <Form.Label>Date</Form.Label>
-            <Form.Control
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Create a new Slot</h1>
+        <form onSubmit={submitHandler} className="text-gray-800 dark:text-gray-200 space-y-4">
+          <div className="mb-4">
+            <label htmlFor="date" className="block text-sm font-medium mb-1">Date</label>
+            <input
               type="date"
+              id="date"
               placeholder="Enter the date"
               value={dateOfEvent}
               onChange={(e) => setDateOfEvent(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             />
-          </Form.Group>
-          <Form.Group className="my-2" controlId="capacity">
-            <Form.Label>Start Time</Form.Label>
-            <Form.Control
+          </div>
+          
+          <div className="mb-4">
+            <label htmlFor="startTime" className="block text-sm font-medium mb-1">Start Time</label>
+            <input
               type="time"
-              placeholder="Enter the date"
+              id="startTime"
+              placeholder="Enter the time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="my-2" controlId="duration">
-            <Form.Label>{`Duration (Hrs)`}</Form.Label>
-            <Form.Select
-              type="number"
-              placeholder="Enter duration"
+          <div className="mb-4">
+            <label htmlFor="duration" className="block text-sm font-medium mb-1">Duration (Hrs)</label>
+            <select
+              id="duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-            </Form.Select>
-          </Form.Group>
+            </select>
+          </div>
 
-          <Form.Group className="my-2" controlId="capacity">
-            <Form.Label>Capacity</Form.Label>
-            <Form.Control
+          <div className="mb-4">
+            <label htmlFor="capacity" className="block text-sm font-medium mb-1">Capacity</label>
+            <input
               type="number"
+              id="capacity"
               placeholder="Enter capacity"
               value={capacity}
               max="20"
               onChange={(e) => setCapacity(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="my-2" controlId="teacher">
-            <Form.Label>Teacher</Form.Label>
-            <Form.Control
+          <div className="mb-4">
+            <label htmlFor="teacher" className="block text-sm font-medium mb-1">Teacher</label>
+            <input
               type="text"
+              id="teacher"
               placeholder="Enter teacher"
               value={teacherName}
               onChange={(e) => setTeacherName(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="my-2" controlId="danceForm">
-            <Form.Label>Dance Form</Form.Label>
-            <Form.Control
+          <div className="mb-4">
+            <label htmlFor="danceForm" className="block text-sm font-medium mb-1">Dance Form</label>
+            <input
               type="text"
+              id="danceForm"
               placeholder="Enter dance form"
               value={danceForm}
               onChange={(e) => setDanceForm(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
             />
-          </Form.Group>
+          </div>
 
           {isLoading && <Loader />}
 
           <div className="text-center">
-            <Button type="submit" variant="info" className="mt-3">
+            <button 
+              type="submit" 
+              className="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition-colors duration-200 mt-4"
+            >
               Submit
-            </Button>
+            </button>
           </div>
-        </Form>
-        <Row className="py-3 text-dark">
-          <Col>
-            Go Back to <Link to={`/slotsview`}>Slots</Link>
-          </Col>
-        </Row>
+        </form>
+        
+        <div className="py-4 text-gray-800 dark:text-gray-200 text-center">
+          Go Back to <Link to="/slotsview" className="text-primary hover:underline">Slots</Link>
+        </div>
       </div>
     </FormContainer>
   );

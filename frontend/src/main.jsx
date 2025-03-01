@@ -11,7 +11,7 @@ import "./index.css";
 import "./App.css";
 import store from "./store.js";
 import { Provider } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/Auth/LoginScreen.jsx";
 import RegisterScreen from "./screens/Auth/RegisterScreen.jsx";

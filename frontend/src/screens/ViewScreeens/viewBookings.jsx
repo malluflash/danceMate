@@ -1,4 +1,3 @@
-import { Button, Card, Row, Col } from "react-bootstrap";
 import Loader from "..//..//components/Loader";
 import SlotsContainer from "../../components/SlotsContainer";
 import {
@@ -41,65 +40,62 @@ const ViewBookings = () => {
   }
 
   if (error) {
-    return <p>Error: {error.message}</p>;
+    return <p className="text-error text-center p-4">Error: {error.message}</p>;
   }
 
   const filteredBookings = bookings.filter((booking) => !cancelledBooking.includes(booking._id));
 
 
   return (
-    <>
-      <div className="text-center">
-        <SlotsContainer className="card-container">
-        <Row xs={1} md={2} lg={3} className="g-4">
+    <div className="text-center">
+      <SlotsContainer>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredBookings.map((booking) => (
-            <Col key={booking._id}>
-            <Card
-              style={{ maxWidth: "300px" }}
-              className="mx-auto mb-3 shadow bg-light"
-            >
-              <Card.Body>
-                <Card.Title className="text-center">
-                  {booking.danceType}
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-center">
-                  Teacher: {booking.teacher}
-                </Card.Subtitle>
-                <Card.Text className="text-center">
-                  Date:
-                  {new Date(booking.dateOfEvent).toLocaleDateString("en-GB", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </Card.Text>
-                <Card.Text className="text-center">
-                  Start Time: {booking.startTime % 12 || 12}{" "}
-                  {booking.startTime < 12 ? "AM" : "PM"}
-                </Card.Text>
-                <Card.Text className="text-center">
-                  Duration: {booking.duration} Hours
-                </Card.Text>
+            <div key={booking._id} className="flex justify-center">
+              <div className="max-w-[300px] w-full bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-white mb-2">
+                    {booking.danceType}
+                  </h3>
+                  <h4 className="mb-2 text-gray-600 dark:text-gray-400 text-center">
+                    Teacher: {booking.teacher}
+                  </h4>
+                  <p className="text-center text-gray-700 dark:text-gray-300 mb-1">
+                    Date:
+                    {new Date(booking.dateOfEvent).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </p>
+                  <p className="text-center text-gray-700 dark:text-gray-300 mb-1">
+                    Start Time: {booking.startTime % 12 || 12}{" "}
+                    {booking.startTime < 12 ? "AM" : "PM"}
+                  </p>
+                  <p className="text-center text-gray-700 dark:text-gray-300 mb-4">
+                    Duration: {booking.duration} Hours
+                  </p>
 
-                <div className="text-center">
-                  <Button
-                    width={100}
-                    variant="danger"
-                    className="mt-2 mx-2 w-50"
-                    onClick={() => confirmCancel(booking._id)}
-                    disabled={cancelledBooking.includes(booking._id)}
-                  >
-                    Cancel
-                  </Button>
+                  <div className="text-center">
+                    <button
+                      className={`w-1/2 mt-2 mx-2 py-2 px-4 rounded transition-colors duration-200 ${
+                        cancelledBooking.includes(booking._id)
+                          ? "bg-red-300 text-white cursor-not-allowed"
+                          : "bg-red-500 hover:bg-red-600 text-white"
+                      }`}
+                      onClick={() => confirmCancel(booking._id)}
+                      disabled={cancelledBooking.includes(booking._id)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </Card.Body>
-            </Card>
-            </Col>
+              </div>
+            </div>
           ))}
-          </Row>
-        </SlotsContainer>
-      </div>
-    </>
+        </div>
+      </SlotsContainer>
+    </div>
   );
 };
 

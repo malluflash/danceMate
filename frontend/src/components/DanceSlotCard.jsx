@@ -1,32 +1,31 @@
-import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
 import SlotsContainer from "./SlotsContainer";
 
 function DanceSlotCard() {
   return (
     <SlotsContainer>
-      <Card style={{ maxWidth: "300px" }} className=" mx-5 bg-light">
-        <Card.Body>
-          <Card.Title className="text-center">Dance Form</Card.Title>
-          <Card.Subtitle className="mb-2 text-center ">Teacher</Card.Subtitle>
-          <Card.Text className=" text-center ">Date</Card.Text>
-          <Card.Text className="text-center">Time Slot</Card.Text>
-          <Card.Text className="mb-3 text-center">Total Count</Card.Text>
+      <div className="max-w-[300px] bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden mx-4">
+        <div className="p-5">
+          <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-white mb-2">Dance Form</h3>
+          <h4 className="text-md text-center text-gray-600 dark:text-gray-300 mb-2">Teacher</h4>
+          <p className="text-center text-gray-700 dark:text-gray-300 mb-1">Date</p>
+          <p className="text-center text-gray-700 dark:text-gray-300 mb-1">Time Slot</p>
+          <p className="text-center text-gray-700 dark:text-gray-300 mb-4">Total Count</p>
           <div className="text-center">
-            <Button variant="warning" className="w-50" href="#">
+            <button 
+              className="w-1/2 bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded transition-colors duration-200"
+              onClick={() => {}}
+            >
               Edit
-            </Button>
-            <Button
-              width={100}
-              variant="danger"
-              className="mt-2 mx-2 w-50"
-              href="#"
+            </button>
+            <button
+              className="w-1/2 mt-2 mx-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition-colors duration-200"
+              onClick={() => {}}
             >
               Cancel
-            </Button>
+            </button>
           </div>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </SlotsContainer>
   );
 }

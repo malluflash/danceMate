@@ -1,17 +1,16 @@
-import { Container, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const FormContainer = ({ children }) => {
   return (
-    <Container>
-      <Row className='justify-content-center mt-5'>
-        <Col xs={12} md={6}>
-          <div className='card p-4 rounded shadow-lg' style={{ background: 'transparent' }}>
+    <div className="container-custom py-8">
+      <div className="flex justify-center">
+        <div className="w-full md:w-2/3 lg:w-1/2">
+          <div className="card">
             {children}
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 
