@@ -34,6 +34,7 @@ app.use("/api/admin", adminRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
+  console.log("path found", path.join(__dirname, "frontend/dist"));
   app.use(express.static(path.join(__dirname, "frontend/dist")));
 
   app.get("*", (req, res) =>
