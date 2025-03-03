@@ -8,7 +8,7 @@ import { ThemeProvider, useTheme } from "./context/ThemeContext";
 const App = () => {
   return (
     <ThemeProvider>
-      <AppContent />
+      <div><h1>Hello evideeee</h1></div>
     </ThemeProvider>
   )
 }
