@@ -12,10 +12,11 @@ const SlotScreen = () => {
   const [search] = useSearchParams();
   const [dateOfEvent, setDateOfEvent] = useState("");
   const [startTime, setStartTime] = useState("");
-  const [duration, setDuration] = useState("");
-  const [capacity, setCapacity] = useState("");
   const [teacherName, setTeacherName] = useState("");
   const [danceForm, setDanceForm] = useState("");
+  const [duration, setDuration] = useState("");
+  const [capacity, setCapacity] = useState("");
+  
 
   const { data: slotDetails, isLoading } = useViewSlotByIdQuery(
     search.get("slotId")
