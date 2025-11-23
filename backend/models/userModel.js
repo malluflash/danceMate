@@ -27,12 +27,19 @@ const userSchema = mongoose.Schema({
         default: 'student',
         type: String,
         required: true,    
+        enum: ['superadmin', 'schooladmin', 'teacher', 'student']
     },
     isActive: {
         type: Boolean,
         required: true  
     }, 
-
+    school: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'School',
+        required: function() {
+            return this.role === 'schooladmin' || this.role === 'teacher' || this.role === 'student';
+        }
+    }
     }, {timestamps: true
     });
 

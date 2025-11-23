@@ -12,6 +12,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
         credentials: 'include'
       }),
     }),
+    superAdminLogin: builder.mutation({
+      query: (data) => ({
+        url: `/api/superadmin/auth`,
+        method: "POST",
+        body: data,
+        credentials: 'include'
+      }),
+    }),
     logout: builder.mutation({
       query: () => ({
         url: `${USER_URL}/logout`,
@@ -40,6 +48,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useLoginMutation,
+  useSuperAdminLoginMutation,
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,

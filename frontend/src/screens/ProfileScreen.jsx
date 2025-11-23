@@ -52,80 +52,83 @@ const ProfileScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Update Profile</h1>
+      <div className="w-full">
+        <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 drop-shadow-lg text-center">Update Profile</h1>
 
-      <form onSubmit={submitHandler} className="text-gray-800 dark:text-gray-200 space-y-4">
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+        <form onSubmit={submitHandler} className="text-white space-y-5">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-white/90">Name</label>
           <input
             type="text"
             id="name"
-            placeholder="Enter name"
+              placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-4 py-2.5 border border-white/30 bg-primary/40 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sunset focus:border-sunset text-white placeholder-white/50 focus:bg-primary/50 transition-all"
           />
         </div>
         
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-white/90">Email Address</label>
           <input
             type="email"
             id="email"
-            placeholder="Enter email"
+              placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-4 py-2.5 border border-white/30 bg-primary/40 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sunset focus:border-sunset text-white placeholder-white/50 focus:bg-primary/50 transition-all"
           />
         </div>
         
-        <div className="mb-4">
-          <label htmlFor="mobile" className="block text-sm font-medium mb-1">Mobile</label>
+          <div>
+            <label htmlFor="mobile" className="block text-sm font-medium mb-2 text-white/90">Mobile</label>
           <input
             type="tel"
             id="mobile"
             placeholder="Enter your mobile number with country code"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-4 py-2.5 border border-white/30 bg-primary/40 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sunset focus:border-sunset text-white placeholder-white/50 focus:bg-primary/50 transition-all"
           />
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium mb-2 text-white/90">Password</label>
           <input
             type="password"
             id="password"
-            placeholder="Enter password"
+              placeholder="Enter new password (min 8 characters)"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+            className="w-full px-4 py-2.5 border border-white/30 bg-white/10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sunset focus:border-sunset text-white placeholder-white/50 focus:bg-white/20 transition-all"
           />
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1">Confirm Password</label>
+        <div>
+          <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2 text-white/90">Confirm Password</label>
           <input
             type="password"
             id="confirmPassword"
-            placeholder="Confirm password"
+            placeholder="Confirm your password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+            className="w-full px-4 py-2.5 border border-white/30 bg-white/10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-sunset focus:border-sunset text-white placeholder-white/50 focus:bg-white/20 transition-all"
           />
         </div>
         
         {isLoading && <Loader />}
         
-        <div className="text-center">
+        <div className="pt-2">
           <button 
             type="submit" 
-            className="bg-primary hover:bg-primary-dark text-white font-medium py-2 px-6 rounded-md transition-colors duration-200 mt-4"
+            className="btn btn-primary w-full py-3"
+            disabled={isLoading}
           >
-            Update
+            {isLoading ? 'Updating...' : 'Update Profile'}
           </button>
         </div>
       </form>
+      </div>
     </FormContainer>
   );
 };

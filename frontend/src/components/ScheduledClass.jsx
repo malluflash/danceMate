@@ -51,24 +51,24 @@ const ScheduledClass = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {slots.map((slot) => (
             <div key={slot._id} className="flex justify-center">
-              <div className="max-w-[300px] w-full bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+              <div className="max-w-[300px] w-full bg-gradient-to-br from-primary/60 via-secondary/60 to-accent/60 backdrop-blur-lg rounded-lg shadow-md overflow-hidden border border-primary/30">
                 <div className="p-5">
-                  <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold text-center text-white mb-2">
                     {slot.danceForm}
                   </h3>
-                  <h4 className="mb-2 text-gray-600 dark:text-gray-400 text-center">
+                  <h4 className="mb-2 text-white/90 text-center">
                     Teacher: {slot.teacherName}
                   </h4>
-                  <p className="text-center text-gray-700 dark:text-gray-300 mb-1">
+                  <p className="text-center text-white/90 mb-1">
                     Date: {new Date(slot.dateOfEvent).toLocaleDateString("en-GB")}
                   </p>
-                  <p className="text-center text-gray-700 dark:text-gray-300 mb-1">
+                  <p className="text-center text-white/90 mb-1">
                     Start Time: {formatStartTime(slot.startTime)}
                   </p>
-                  <p className="text-center text-gray-700 dark:text-gray-300 mb-1">
+                  <p className="text-center text-white/90 mb-1">
                     Duration: {slot.duration} Hours
                   </p>
-                  <p className="text-center text-gray-700 dark:text-gray-300 mb-4">
+                  <p className="text-center text-white/90 mb-4">
                     Capacity: {slot.capacity}
                   </p>
                   <div className="flex justify-center">

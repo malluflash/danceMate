@@ -16,25 +16,25 @@ const protect = async (req, res, next) => {
     } catch (error) {
       console.log(error);
       res.status(401);
-      throw new Error("Not authorized ,token failed ");
+      throw new Error("Not authorized, token failed");
     }
   } else {
     res.status(401);
-    throw new Error("Not authorized , no token");
+    throw new Error("Not authorized, no token");
   }
 };
 
-// teacher middleware (Admin will also have access)
+// Teacher middleware (School admin and super admin will also have access)
 const teacherOrAdmin = (req, res, next) => {
-  if (req.user && (req.user.role === "teacher" || req.user.role === "admin")) {
+  if (req.user && (req.user.role === "teacher" || req.user.role === "schooladmin" || req.user.role === "superadmin")) {
     next();
   } else {
     res.status(403); // Forbidden
-    throw new Error("Not authorized as a teacher");
+    throw new Error("Not authorized as a teacher or admin");
   }
 };
 
-// student middleware
+// Student middleware
 const student = (req, res, next) => {
   if (req.user && req.user.role === "student") {
     next();
@@ -44,14 +44,34 @@ const student = (req, res, next) => {
   }
 };
 
-// admin middleware
+// Legacy admin middleware (for backward compatibility)
 const admin = (req, res, next) => {
-  if (req.user && req.user.role === "admin") {
+  if (req.user && (req.user.role === "superadmin" || req.user.role === "schooladmin")) {
     next();
   } else {
     res.status(401);
-    throw new Error("not authorized as admin");
+    throw new Error("Not authorized as admin");
   }
 };
 
-export { protect, teacherOrAdmin, student, admin };
+// Super admin middleware
+const isSuperAdmin = (req, res, next) => {
+  if (req.user && req.user.role === "superadmin") {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as super admin");
+  }
+};
+
+// School admin middleware
+const isSchoolAdmin = (req, res, next) => {
+  if (req.user && (req.user.role === "schooladmin" || req.user.role === "superadmin")) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as school admin");
+  }
+};
+
+export { protect, teacherOrAdmin, student, admin, isSuperAdmin, isSchoolAdmin };

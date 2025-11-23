@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-light-bg text-light-text transition-colors duration-200;
     margin: 0;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
   
   .dark body {
@@ -42,23 +47,23 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+    @apply bg-gradient-to-r from-primary to-secondary text-white hover:from-primary-dark hover:to-secondary-light focus:ring-primary shadow-button hover:shadow-glow transition-all duration-300;
   }
   
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-secondary-light focus:ring-secondary;
+    @apply bg-gradient-to-r from-secondary to-accent text-white hover:from-secondary-light hover:to-accent-light focus:ring-secondary shadow-button hover:shadow-glow transition-all duration-300;
   }
   
   .btn-accent {
-    @apply bg-accent text-white hover:bg-accent-dark focus:ring-accent;
+    @apply bg-gradient-to-r from-accent to-sunset text-white hover:from-accent-light hover:to-sunset-dark focus:ring-accent shadow-button hover:shadow-glow transition-all duration-300;
   }
   
   .btn-outline {
-    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white focus:ring-primary;
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-gradient-to-r hover:from-primary hover:to-secondary hover:text-white focus:ring-primary transition-all duration-300;
   }
 
   .btn-outline-accent {
-    @apply border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-white focus:ring-accent;
+    @apply border-2 border-accent text-accent bg-transparent hover:bg-gradient-to-r hover:from-accent hover:to-sunset hover:text-white focus:ring-accent transition-all duration-300;
   }
   
   .btn-sm {
@@ -70,20 +75,32 @@
   }
   
   .input {
-    @apply w-full px-4 py-3 rounded-xl border border-light-border bg-light-card text-light-text 
+    @apply w-full px-4 py-3 rounded-xl border border-light-border text-light-text 
     focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-200;
+    background-color: rgba(84, 8, 99, 0.4) !important;
   }
   
   .dark .input {
-    @apply border-dark-border bg-dark-card text-dark-text focus:ring-accent;
+    @apply border-dark-border text-dark-text focus:ring-accent;
+    background-color: rgba(61, 6, 73, 0.8) !important;
   }
   
   .card {
-    @apply bg-light-card rounded-2xl shadow-card p-6 border border-light-border transition-all duration-200 hover:shadow-card-hover;
+    @apply rounded-2xl shadow-card p-6 border border-light-border transition-all duration-300 hover:shadow-card-hover hover:border-primary/20;
+    background-color: rgba(84, 8, 99, 0.5) !important;
   }
   
   .dark .card {
-    @apply bg-dark-card border-dark-border;
+    @apply border-dark-border hover:border-secondary/50;
+    background-color: rgba(61, 6, 73, 0.85) !important;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-to-br from-primary/50 via-secondary/50 to-accent/50 backdrop-blur-lg border border-primary/30 rounded-2xl shadow-card p-6 transition-all duration-300 hover:shadow-glow hover:border-primary/50;
+  }
+  
+  .dark .card-gradient {
+    @apply from-primary/60 via-secondary/60 to-accent/60 border-secondary/40 hover:border-secondary/60;
   }
   
   .nav-link {
@@ -95,7 +112,15 @@
   }
 
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-purple-pink;
+  }
+  
+  .gradient-bg-vertical {
+    @apply bg-gradient-purple-pink-vertical;
   }
 
   .section {
@@ -112,6 +137,19 @@
 
   .form-label {
     @apply block text-sm font-medium mb-2 text-light-text dark:text-dark-text;
+  }
+
+  /* Select dropdown styling */
+  select {
+    @apply appearance-none;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  select option {
+    @apply bg-primary text-white;
   }
 
   .badge {

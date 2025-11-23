@@ -77,8 +77,8 @@ const SlotCreation = () => {
   return (
     <FormContainer>
       <div>
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Create a new Slot</h1>
-        <form onSubmit={submitHandler} className="text-gray-800 dark:text-gray-200 space-y-4">
+        <h1 className="text-2xl font-bold text-white mb-6">Create a new Slot</h1>
+        <form onSubmit={submitHandler} className="text-white space-y-4">
           <div className="mb-4">
             <label htmlFor="date" className="block text-sm font-medium mb-1">Date</label>
             <input
@@ -87,7 +87,7 @@ const SlotCreation = () => {
               placeholder="Enter the date"
               value={dateOfEvent}
               onChange={(e) => setDateOfEvent(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             />
           </div>
           
@@ -99,7 +99,7 @@ const SlotCreation = () => {
               placeholder="Enter the time"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             />
           </div>
 
@@ -109,7 +109,7 @@ const SlotCreation = () => {
               id="duration"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -127,7 +127,7 @@ const SlotCreation = () => {
               value={capacity}
               max="20"
               onChange={(e) => setCapacity(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             />
           </div>
 
@@ -139,7 +139,7 @@ const SlotCreation = () => {
               placeholder="Enter teacher"
               value={teacherName}
               onChange={(e) => setTeacherName(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             />
           </div>
 
@@ -151,7 +151,7 @@ const SlotCreation = () => {
               placeholder="Enter dance form"
               value={danceForm}
               onChange={(e) => setDanceForm(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-800"
+              className="w-full px-3 py-2 border border-white/30 bg-primary/40 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary focus:bg-primary/50 text-white placeholder-white/50"
             />
           </div>
 
@@ -167,8 +167,8 @@ const SlotCreation = () => {
           </div>
         </form>
         
-        <div className="py-4 text-gray-800 dark:text-gray-200 text-center">
-          Go Back to <Link to="/slotsview" className="text-primary hover:underline">Slots</Link>
+        <div className="py-4 text-white text-center">
+          Go Back to <Link to="/slotsview" className="text-sunset hover:underline">Slots</Link>
         </div>
       </div>
     </FormContainer>

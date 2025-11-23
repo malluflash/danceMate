@@ -1,10 +1,14 @@
-Hero {
-  background-image: url('./img/dramatic-dance-photo.jpg');
-
+/* Hero background with gradient overlay */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(107, 33, 168, 0.9) 0%, rgba(147, 51, 234, 0.8) 25%, rgba(236, 72, 153, 0.7) 75%, rgba(252, 231, 243, 0.6) 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
-  
-.roomfac {
-  background-color: rgba(255, 145, 0, 0.5);
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 
@@ -28,13 +32,15 @@ Hero {
 }
 
 .Toastify__toast-theme--light {
-  background: #ffffff !important;
-  color: #1a202c !important;
+  background: linear-gradient(135deg, rgba(84, 8, 99, 0.95), rgba(146, 72, 122, 0.95), rgba(228, 155, 166, 0.95)) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .Toastify__toast-theme--dark {
-  background: #191c20 !important;
-  color: #f7fafc !important;
+  background: linear-gradient(135deg, rgba(84, 8, 99, 0.95), rgba(146, 72, 122, 0.95), rgba(228, 155, 166, 0.95)) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .Toastify__toast--success {
@@ -50,7 +56,7 @@ Hero {
 }
 
 .Toastify__toast--info {
-  border-left: 4px solid #3b82f6 !important;
+  border-left: 4px solid #8B5CF6 !important;
 }
 
 .Toastify__progress-bar {
@@ -58,11 +64,11 @@ Hero {
 }
 
 .Toastify__progress-bar-theme--light {
-  background: linear-gradient(to right, #0666eb, #00d2c0) !important;
+  background: linear-gradient(to right, #540863, #92487A, #E49BA6, #FFD3D5) !important;
 }
 
 .Toastify__progress-bar-theme--dark {
-  background: linear-gradient(to right, #0666eb, #00d2c0) !important;
+  background: linear-gradient(to right, #540863, #92487A, #E49BA6, #FFD3D5) !important;
 }
 
 .Toastify__close-button {

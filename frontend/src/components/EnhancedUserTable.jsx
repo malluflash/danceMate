@@ -67,7 +67,7 @@ const EnhancedUserTable = () => {
           <input
             type="text"
             placeholder="Search users..."
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent/50"
+            className="w-full px-4 py-2 bg-primary/40 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:bg-primary/50"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -79,7 +79,7 @@ const EnhancedUserTable = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+      <div className="overflow-x-auto bg-primary/50 backdrop-blur-sm rounded-xl border border-primary/30">
         <table className="min-w-full divide-y divide-white/10">
           <thead>
             <tr>

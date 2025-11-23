@@ -52,11 +52,12 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-light-bg dark:bg-dark-bg py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-purple-pink-vertical py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 dark:bg-primary/10 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent/5 dark:bg-accent/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-primary/30 rounded-full filter blur-3xl opacity-60 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-accent/30 rounded-full filter blur-3xl opacity-60 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/20 rounded-full filter blur-3xl opacity-40"></div>
       </div>
       
       <motion.div 
@@ -67,7 +68,7 @@ const LoginScreen = () => {
       >
         <div className="text-center">
           <motion.h2 
-            className="text-3xl font-extrabold gradient-text"
+            className="text-3xl font-extrabold text-white drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -75,7 +76,7 @@ const LoginScreen = () => {
             Welcome back
           </motion.h2>
           <motion.p 
-            className="mt-2 text-sm text-light-text/70 dark:text-dark-text/70"
+            className="mt-2 text-sm text-white/80"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -85,14 +86,14 @@ const LoginScreen = () => {
         </div>
         
         <motion.div 
-          className="card"
+          className="card-gradient backdrop-blur-xl border-white/20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <form className="space-y-6" onSubmit={submitHandler}>
             <div className="form-group">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label text-white">
                 Email address
               </label>
               <input
@@ -100,7 +101,7 @@ const LoginScreen = () => {
                 name="email"
                 type="email"
                 required
-                className="input"
+                className="input bg-primary/40 border-white/30 text-white placeholder-white/50 focus:bg-primary/50 focus:border-primary"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -109,11 +110,11 @@ const LoginScreen = () => {
             
             <div className="form-group">
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="form-label">
+                <label htmlFor="password" className="form-label text-white">
                   Password
                 </label>
                 <div className="text-sm">
-                  <Link to="#" className="text-primary dark:text-accent hover:opacity-80 transition-opacity">
+                  <Link to="#" className="text-sunset hover:text-white transition-colors">
                     Forgot password?
                   </Link>
                 </div>
@@ -123,7 +124,7 @@ const LoginScreen = () => {
                 name="password"
                 type="password"
                 required
-                className="input"
+                className="input bg-primary/40 border-white/30 text-white placeholder-white/50 focus:bg-primary/50 focus:border-primary"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -155,9 +156,9 @@ const LoginScreen = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <p className="text-light-text/70 dark:text-dark-text/70">
+          <p className="text-white/80">
             New to Dance Mate?{' '}
-            <Link to="/register" className="font-medium text-primary dark:text-accent hover:opacity-80 transition-opacity">
+            <Link to="/register" className="font-medium text-sunset hover:text-white transition-colors">
               Create an account
             </Link>
           </p>

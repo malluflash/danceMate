@@ -9,9 +9,15 @@ import generateToken from '../../utils/generateToken.js';
 const authUser = asyncHandler(async (req, res) => {
     const {email, password} = req.body;
 
-    const user = await User.findOne({ email});
+    const user = await User.findOne({ email}).populate('school', 'name');
 
     if(user && (await user.matchPassword(password))) {
+        // Reject superadmin login attempts - they must use /api/superadmin/auth
+        if (user.role === 'superadmin') {
+            res.status(403);
+            throw new Error('Super admin must use the super admin login route');
+        }
+
         generateToken(res, user._id);
         res.status(201).json({
             _id: user._id,
@@ -19,7 +25,8 @@ const authUser = asyncHandler(async (req, res) => {
             email: user.email,
             role: user.role,
             isActive: user.isActive,
-            contactNumber: user.contactNumber
+            contactNumber: user.contactNumber,
+            school: user.school
         });
     } else {
         res.status(401);
@@ -34,7 +41,7 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email,
         password, contactNumber,
-        role, isActive} = req.body;
+        role, isActive, school} = req.body;
 
     const userExists = await User.findOne({email});
 
@@ -43,13 +50,17 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('User already exists');
     }
 
+    // By default, new users will be students and inactive until approved
+    const userRole = role || 'student';
+
     const user = await User.create({
         name,
         email,
         password,
         contactNumber,
-        role,
-        isActive: false
+        role: userRole,
+        isActive: false,
+        school
     });
 
     if(user) {
@@ -59,7 +70,8 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             role: user.role,
-            contactNumber: user.contactNumber
+            contactNumber: user.contactNumber,
+            school: user.school
         });
     } else {
         res.status(400);
@@ -83,14 +95,21 @@ const logoutUser = asyncHandler(async (req, res) => {
 // route        GET/api/users/profile
 // @access      Private
 const getUserProfile = asyncHandler(async (req, res) => {
-    const user = {
-        _id:            req.user._id,
-        name:           req.user.name,
-        email:          req.user.email,
-        contactNumber:  req.user.contactNumber,
-        role:           req.user.role
+    const user = await User.findById(req.user._id).populate('school', 'name');
+    
+    if (!user) {
+        res.status(404);
+        throw new Error('User not found');
     }
-    res.status(200).json(user);
+
+    res.status(200).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        contactNumber: user.contactNumber,
+        role: user.role,
+        school: user.school
+    });
 });
 
 // @description Update the user profile
@@ -113,7 +132,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
-            contactNumber: updatedUser.contactNumber
+            contactNumber: updatedUser.contactNumber,
+            role: updatedUser.role,
+            school: updatedUser.school
         });
 
     } else {

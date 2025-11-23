@@ -7,6 +7,9 @@ import userRoutes from "./routes/userRoutes.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import slotsRoutes from "./routes/slotsRoutes.js";
+import schoolRoutes from "./routes/schoolRoutes.js";
+import schoolAdminRoutes from "./routes/schoolAdminRoutes.js";
+import superAdminRoutes from "./routes/superAdminRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
@@ -31,6 +34,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/slots", slotsRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/schools", schoolRoutes);
+app.use("/api/schooladmin", schoolAdminRoutes);
+app.use("/api/superadmin", superAdminRoutes);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
